@@ -1,6 +1,4 @@
 const express = require("express");
-const request = require("request");
-const { email, password, token, server } = require("./config");
 const { getOdometer } = require("./odometer");
 const { getVehicleID } = require("./vehicleID");
 
@@ -13,14 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // parse from data client
 
 app.get("/get-odometer", (req, res) => {
-  // to get vehicle ID
-  let vehicleID = getVehicleID(req.body.number);
-  // pass the vehicle ID to getOdometer function
-  let odometer = getOdometer(vehicleID);
-  res.send({
-    vehicleID: vehicleID,
-    odometer: odometer
-  });
+  // To get vehicle number from request params or body
+  // Get the vehicle id
+  // pass the vehicle ID to get Odometer function
 });
 
 app.listen(port, () => {

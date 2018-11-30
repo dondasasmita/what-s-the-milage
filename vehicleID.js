@@ -36,7 +36,7 @@ module.exports = {
 };
 
 // TEST RUN THE FUNCTION
-// getVehicleID("SLHxxxZ", (err, result) => {
+// getVehicleID("SKAxxxxc", (err, result) => {
 //   if (!err) {
 //     console.log(result);
 //   } else {
