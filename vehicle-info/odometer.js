@@ -1,5 +1,5 @@
 const request = require("request");
-const { email, password, token, server } = require("./config");
+const { email, password, token, server } = require("../config");
 
 // Function to get Odometer list from server API
 const getOdometer = (vehicleID, callback) => {
@@ -21,6 +21,7 @@ const getOdometer = (vehicleID, callback) => {
       } else {
         // To handle the error here
         console.log(`Error: ${err}`);
+        callback(err);
       }
     }
   ).auth(email, password);
