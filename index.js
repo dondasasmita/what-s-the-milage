@@ -1,6 +1,7 @@
 const express = require("express");
-const { getOdometer } = require("./vehicle-info/odometer");
-const { getVehicleID } = require("./vehicle-info/vehicleID");
+// const { getOdometer } = require("./vehicle-info/odometer");
+// const { getVehicleID } = require("./vehicle-info/vehicleID");
+const { getInfo } = require("./routes/getVehicleInfo");
 
 const app = express();
 
@@ -14,35 +15,20 @@ app.set("view engine", "ejs"); //configure template engine
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // parse from data client
 
+/**
+ * All routes
+ */
+
 app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/get-odometer", (req, res) => {
-  // To get vehicle number from request body
-  let vehicleNum = req.body.vehicle_number;
-  // Get the vehicle id
-  getVehicleID(vehicleNum, (err, id) => {
-    if (err) {
-      // To handle the error
-      res.send("Vehicle ID cannot be found", err);
-    } else {
-      // pass the vehicle ID to get Odometer function
-      let vehicleID = id;
-      getOdometer(vehicleID, (err, odometer) => {
-        if (err) {
-          // To handle the Error
-          res.send("Vehicle Odometer cannot be found", err);
-        } else {
-          res.send({
-            vehicleID: vehicleID,
-            odometer: odometer
-          });
-        }
-      });
-    }
-  });
+// GET and POST vehicle Info
+app.get("/vehicle-info", (req, res) => {
+  res.render("get-vehicle-info");
 });
+
+app.post("/vehicle-info", getInfo);
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
