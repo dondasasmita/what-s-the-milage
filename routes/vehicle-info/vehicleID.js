@@ -5,7 +5,7 @@
 
 // Load all dependencies
 const request = require("request");
-const { email, password, token, server } = require("../config");
+const { email, password, token, server } = require("../../config");
 
 // Function to get vehicle ID from vehicle number given
 const getVehicleID = (vehicleNumber, callback) => {
