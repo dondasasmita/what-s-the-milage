@@ -8,7 +8,7 @@ const request = require("request");
 const { email, password, token, server } = require("../../config");
 
 // Function to get Odometer list from server API
-const getOdometer = (vehicleID, callback) => {
+const getPosition = (vehicleID, callback) => {
   request(
     {
       url: `${server}/api/positions?token=${token}`,
@@ -18,12 +18,14 @@ const getOdometer = (vehicleID, callback) => {
       if (!err && response.statusCode == 200) {
         // get the Odometer and assign it to odometer variable
         let odometer;
+        let totalDistance;
         for (let i = 0; i < body.length; i++) {
           if (body[i].deviceId == vehicleID) {
             odometer = body[i].attributes.odometer;
+            totalDistance = body[i].attributes.totalDistance;
           }
         }
-        callback(undefined, odometer);
+        callback(undefined, { odometer, totalDistance });
       } else {
         // To handle the error here
         console.log(`Error: ${err}`);
@@ -34,5 +36,5 @@ const getOdometer = (vehicleID, callback) => {
 };
 
 module.exports = {
-  getOdometer
+  getPosition
 };

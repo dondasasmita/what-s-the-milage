@@ -4,7 +4,7 @@
  */
 
 // Load all modules
-const { getOdometer } = require("./vehicle-info/odometer.js");
+const { getPosition } = require("./vehicle-info/odometer.js");
 const { getVehicleID } = require("./vehicle-info/vehicleID.js");
 
 const getInfo = (req, res) => {
@@ -18,7 +18,7 @@ const getInfo = (req, res) => {
     } else {
       // pass the vehicle ID to get Odometer function
       let vehicleID = id;
-      getOdometer(vehicleID, (err, odometer) => {
+      getPosition(vehicleID, (err, data) => {
         if (err) {
           // To handle the Error
           res.send("Vehicle Odometer cannot be found", err);
@@ -26,7 +26,8 @@ const getInfo = (req, res) => {
           res.render("vehicle-info.ejs", {
             vehicle_number: vehicleNum,
             vehicle_id: vehicleID,
-            odometer: odometer
+            odometer: data.odometer,
+            totalDistance: data.totalDistance
           });
         }
       });
