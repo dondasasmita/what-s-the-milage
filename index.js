@@ -2,6 +2,7 @@ const express = require("express");
 // const { getOdometer } = require("./vehicle-info/odometer");
 // const { getVehicleID } = require("./vehicle-info/vehicleID");
 const { getInfo } = require("./routes/getVehicleInfo");
+const { listAllVehicles } = require("./routes/vehicleList");
 
 const app = express();
 
@@ -29,6 +30,8 @@ app.get("/vehicle-info", (req, res) => {
 });
 
 app.post("/vehicle-info", getInfo);
+
+app.get("/vehicles", listAllVehicles);
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
