@@ -20,7 +20,7 @@ app.use(express.json()); // parse from data client
  */
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("get-vehicle-info");
 });
 
 // GET and POST vehicle Info
