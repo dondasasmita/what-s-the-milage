@@ -34,6 +34,7 @@ const listAllVehicles = (req, res) => {
   getAllVehicles((err, vehicles) => {
     if (!err) {
       res.render("list-all-vehicles.ejs", {
+        title: "List of Vehicles",
         vehicles: vehicles
       });
     }

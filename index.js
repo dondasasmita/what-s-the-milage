@@ -21,7 +21,7 @@ app.use(express.json()); // parse from data client
  */
 
 app.get("/", (req, res) => {
-  res.render("get-vehicle-info");
+  res.render("partials/header.ejs");
 });
 
 // GET and POST vehicle Info

@@ -1,49 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Bootstrap CDN -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <title>Vehicle List</title>
-  </head>
-  <body>
-    <% if(vehicles.length > 0){%>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>Vehicle Number</th>
-          <th>Status</th>
-          <th>Type</th>
-          <th>Last Update</th>
-          <th>More Info</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% vehicles.forEach((vehicle, index) => { %>
-        <tr>
-          <td scope="row"><%= vehicle.number%></td>
-          <td scope="row"><%= vehicle.status%></td>
-          <td scope="row"><%= vehicle.type%></td>
-          <td scope="row"><%= vehicle.last_update%></td>
-          <td>
-            <a
-              href="/vehicle-info/<%= vehicle.number%>"
-              type="submit"
-              class="btn btn-primary"
-              >Click Here</a
-            >
-          </td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
-    <%} %>
+<!-- add partials -->
+<% include partials/header.ejs%>
+
+
+<div class="container">
+      <!-- To put search bar for vechile on the list -->
+      <% if(vehicles.length > 0){%>
+        <table class="table table-bordered" id="list-of-vehicles">
+          <thead>
+            <tr>
+              <th>Vehicle Number</th>
+              <th>Status</th>
+              <th>Type</th>
+              <th>Last Update</th>
+              <th>More Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% vehicles.forEach((vehicle, index) => { %>
+            <tr>
+              <td scope="row"><%= vehicle.number%></td>
+              <td scope="row"><%= vehicle.status%></td>
+              <td scope="row"><%= vehicle.type%></td>
+              <td scope="row"><%= vehicle.last_update%></td>
+              <td>
+                <a href="/vehicle-info/<%= vehicle.number%>" class="btn btn-primary"
+                  >Click Here</a
+                >
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <%} %>
+</div>
   </body>
 </html>
