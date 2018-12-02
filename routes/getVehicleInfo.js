@@ -9,7 +9,8 @@ const { getVehicleID } = require("./vehicle-info/vehicleID.js");
 
 const getInfo = (req, res) => {
   // To get vehicle number from request body
-  let vehicleNum = req.body.vehicle_number;
+  // let vehicleNum = req.body.vehicle_number;
+  let vehicleNum = req.params.vehicle_number;
   // Get the vehicle id
   getVehicleID(vehicleNum, (err, id) => {
     if (err) {

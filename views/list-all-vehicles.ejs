@@ -18,21 +18,28 @@
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Vehicle ID</th>
           <th>Vehicle Number</th>
           <th>Status</th>
           <th>Type</th>
           <th>Last Update</th>
+          <th>More Info</th>
         </tr>
       </thead>
       <tbody>
         <% vehicles.forEach((vehicle, index) => { %>
         <tr>
-          <th scope="row"><%= vehicle.id%></th>
-          <th scope="row"><%= vehicle.number%></th>
-          <th scope="row"><%= vehicle.status%></th>
-          <th scope="row"><%= vehicle.type%></th>
-          <th scope="row"><%= vehicle.last_update%></th>
+          <td scope="row"><%= vehicle.number%></td>
+          <td scope="row"><%= vehicle.status%></td>
+          <td scope="row"><%= vehicle.type%></td>
+          <td scope="row"><%= vehicle.last_update%></td>
+          <td>
+            <a
+              href="/vehicle-info/<%= vehicle.number%>"
+              type="submit"
+              class="btn btn-primary"
+              >Click Here</a
+            >
+          </td>
         </tr>
         <% }) %>
       </tbody>

@@ -14,7 +14,6 @@ const getAllVehicles = callback => {
         let vehicles = [];
         for (let i = 0; i < body.length; i++) {
           vehicles.push({
-            id: body[i].id,
             number: body[i].name,
             status: body[i].status,
             type: body[i].category,

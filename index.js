@@ -25,11 +25,11 @@ app.get("/", (req, res) => {
 });
 
 // GET and POST vehicle Info
-app.get("/vehicle-info", (req, res) => {
-  res.render("get-vehicle-info");
-});
+// app.get("/vehicle-info", (req, res) => {
+//   res.render("get-vehicle-info");
+// });
 
-app.post("/vehicle-info", getInfo);
+app.get("/vehicle-info/:vehicle_number", getInfo);
 
 app.get("/vehicles", listAllVehicles);
 
