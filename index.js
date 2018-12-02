@@ -20,14 +20,14 @@ app.use(express.json()); // parse from data client
  * All routes
  */
 
-app.get("/", (req, res) => {
-  res.render("partials/header.ejs");
-});
+// app.get("/", (req, res) => {
+//   res.render("partials/header.ejs");
+// });
 
 // GET and POST vehicle Info
-// app.get("/vehicle-info", (req, res) => {
-//   res.render("get-vehicle-info");
-// });
+app.get("/", (req, res) => {
+  res.render("login.ejs");
+});
 
 app.get("/vehicle-info/:vehicle_number", getInfo);
 
