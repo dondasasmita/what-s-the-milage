@@ -25,6 +25,7 @@ const getInfo = (req, res) => {
           res.send("Vehicle Odometer cannot be found", err);
         } else {
           res.render("vehicle-info.ejs", {
+            title: "Vehicle Info",
             vehicle_number: vehicleNum,
             vehicle_id: vehicleID,
             odometer: data.odometer,

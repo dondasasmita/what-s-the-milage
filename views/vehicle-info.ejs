@@ -1,36 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Bootstrap CDN -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
-    />
-    <title>iWorkshop - Vehicle Info</title>
-  </head>
-  <body>
-    <div><h1>Vehicle Information</h1></div>
-    <div>
-      <h3>Vehicle Number :</h3>
-      <h3><%= vehicle_number %></h3>
+<!-- add partials -->
+<% include partials/header.ejs%>
+
+    <div class="container">
+      <h1>Vehicle Information</h1>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Vehicle Number</th>
+            <th>Vehicle ID</th>
+            <th>Current Odometer</th>
+            <th>Total Distance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <td scope="row"><%= vehicle_number%></td>
+          <td scope="row"><%= vehicle_id %></td>
+          <td scope="row"><%= odometer %></td>
+          <td scope="row"><%= totalDistance %></td>
+        </tbody>
+      </table>
+      <a href="/vehicles" class="btn btn-primary">Back</a>
     </div>
-    <div>
-      <h3>Vehicle ID :</h3>
-      <h3><%= vehicle_id %></h3>
-    </div>
-    <div>
-      <h3>Current Odometer :</h3>
-      <h3><%= odometer %></h3>
-    </div>
-    <div>
-      <h3>Total Distance :</h3>
-      <h3><%= totalDistance %></h3>
-    </div>
-    <a href="/vehicles" class="btn btn-primary">Back</a>
   </body>
 </html>
