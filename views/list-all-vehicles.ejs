@@ -9,17 +9,21 @@
           <thead>
             <tr>
               <th>Vehicle Number</th>
-              <th>Status</th>
-              <th>Type</th>
+              <th><i class="fas fa-signal"></i></th>
+              <th><i class="fas fa-shuttle-van"></th>
               <th>Last Update</th>
-              <th>More Info</th>
+              <th><i class="fas fa-info"></i></th>
             </tr>
           </thead>
           <tbody>
             <% vehicles.forEach((vehicle, index) => { %>
             <tr>
               <td scope="row"><%= vehicle.number%></td>
-              <td scope="row"><%= vehicle.status%></td>
+              <% if (vehicle.status === "online") { %>
+                <td scope="row"><i class="fas fa-check"></i></td>
+              <% } else { %>
+                <td scope="row"><%= vehicle.status%></td>
+              <% } %>
               <td scope="row"><%= vehicle.type%></td>
               <td scope="row"><%= vehicle.last_update%></td>
               <td>
