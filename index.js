@@ -1,10 +1,28 @@
 const express = require("express");
-// const { getOdometer } = require("./vehicle-info/odometer");
-// const { getVehicleID } = require("./vehicle-info/vehicleID");
+const mysql = require("mysql");
+const { databaseConfig } = require("./config");
 const { getInfo } = require("./routes/getVehicleInfo");
 const { listAllVehicles } = require("./routes/vehicleList");
 
 const app = express();
+
+const database = mysql.createConnection({
+  host: databaseConfig.host,
+  user: databaseConfig.user,
+  password: databaseConfig.password,
+  database: databaseConfig.schema
+});
+
+// Connect the database
+database.connect(err => {
+  if (err) {
+    throw err;
+  }
+  console.log("Connected to database");
+});
+
+// Initialized database as global object
+global.database = database;
 
 const port = 3000;
 
