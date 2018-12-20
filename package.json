@@ -9,8 +9,10 @@
   "author": "Donda Yusuf",
   "license": "ISC",
   "dependencies": {
+    "cron": "^1.6.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "mysql": "^2.16.0",
     "request": "^2.88.0"
   }
 }
