@@ -6,11 +6,10 @@
 // Load all modules
 const { getPosition } = require("./vehicle-info/odometer.js");
 const { getVehicleID } = require("./vehicle-info/vehicleID.js");
-const { insertNewPosition } = require("../database/query");
+const { getPositionTenMinutely } = require("../lib/getPositionTenMinutely");
 
 const getInfo = (req, res) => {
   // To get vehicle number from request body
-  // let vehicleNum = req.body.vehicle_number;
   let vehicleNum = req.params.vehicle_number;
   // Get the vehicle id
   getVehicleID(vehicleNum, (err, id) => {
@@ -25,23 +24,17 @@ const getInfo = (req, res) => {
           // To handle the Error
           res.send("Vehicle Odometer cannot be found", err);
         } else {
-          database.query(
-            insertNewPosition(vehicleNum, vehicleID, data),
-            (err, result) => {
-              if (err) {
-                res.send(err);
-              } else {
-                res.render("vehicle-info.ejs", {
-                  title: "Vehicle Info",
-                  vehicle_number: vehicleNum,
-                  vehicle_id: vehicleID,
-                  odometer: data.odometer,
-                  totalDistance: data.totalDistance
-                });
-                console.log(result);
-              }
-            }
-          );
+          //  Render to view
+          res.render("vehicle-info.ejs", {
+            title: "Vehicle Info",
+            vehicle_number: vehicleNum,
+            vehicle_id: vehicleID,
+            odometer: data.odometer,
+            totalDistance: data.totalDistance
+          });
+
+          // Save it every ten minutes
+          getPositionTenMinutely(vehicleID, vehicleNum);
         }
       });
     }

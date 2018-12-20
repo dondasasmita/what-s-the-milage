@@ -34,12 +34,3 @@ const getVehicleID = (vehicleNumber, callback) => {
 module.exports = {
   getVehicleID
 };
-
-// TEST RUN THE FUNCTION
-// getVehicleID("SKAxxxxc", (err, result) => {
-//   if (!err) {
-//     console.log(result);
-//   } else {
-//     console.log(err);
-//   }
-// });

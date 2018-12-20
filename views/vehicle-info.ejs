@@ -1,25 +1,23 @@
 <!-- add partials -->
 <% include partials/header.ejs%>
 
-    <div class="container">
-      <h1>Vehicle Information</h1>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>Vehicle Number</th>
-            <th>Vehicle ID</th>
-            <th>Current Odometer</th>
-            <th>Total Distance</th>
-          </tr>
-        </thead>
-        <tbody>
-          <td scope="row"><%= vehicle_number%></td>
-          <td scope="row"><%= vehicle_id %></td>
-          <td scope="row"><%= odometer %></td>
-          <td scope="row"><%= totalDistance %></td>
-        </tbody>
-      </table>
-      <a href="/vehicles" class="btn btn-primary">Back</a>
-    </div>
-  </body>
-</html>
+<div class="container">
+  <h1>Vehicle Information</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Vehicle Number</th>
+        <th>Vehicle ID</th>
+        <th>Current Odometer</th>
+        <th>Total Distance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td scope="row"><%= vehicle_number%></td>
+      <td scope="row"><%= vehicle_id %></td>
+      <td scope="row"><%= odometer %></td>
+      <td scope="row"><%= totalDistance %></td>
+    </tbody>
+  </table>
+  <a href="/vehicles" class="btn btn-primary">Back</a>
+</div>
